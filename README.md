@@ -240,4 +240,4 @@ And the final outcome is like these following pics
 ![1678166943739](image/README/1678166943739.png)![1678166968254](image/README/1678166968254.png)
 
 
-There is a bug in the code. Sometimes when you modify the status, the front end will not render, but the data has been modified in the back end. At this time, you need to refresh the page or click another button, then it works. I don't know if there is a problem in useeffect function I defined. This problem is also the reason why I spent so long.
+There is a bug in the code. Sometimes when you modify the status, the front end will not render, but the data has been modified in the back end. At this time, you need to refresh the page or click another button, then it works. I don't know if there is a problem in useeffect function I defined. This problem is also the reason why I spent so long for this challenge.
