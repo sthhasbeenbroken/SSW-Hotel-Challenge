@@ -99,15 +99,15 @@ const columns =[
   const [searchType,setSearchType]=useState();
   const [open,setOpen] =useState(false);
   const [formVlaue,setFormValue] = useState();
-  const [actionValue,setActionValue]=useState();
+  const [actionValue,setActionValue]=useState('0');
   const [rid,setRid]=useState();
   // const [flag,setFlag]=useState(false);
   /**Action change */
   const changestate=(e,rrid)=>{
     //console.log(e)
     // setFlag(true);
-    console.log(e.target.value)
-    console.log(rrid)
+   // console.log(e.target.value)
+   // console.log(rrid)
     setRid(rrid)
       if(e.target.value==='入住'){
         setActionValue('1')
@@ -128,7 +128,6 @@ const columns =[
         setActionValue('0')
       }
       else setActionValue('0')
-      fetchData()
       // console.log(actionValue)
       // console.log(rid)
     //   axios.patch(`http://121.42.165.52/hotelapi/rooms`,{id:rid,type:actionValue}
@@ -188,7 +187,21 @@ const columns =[
         })
         fetchData()
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      },[JSON.stringify(actionValue)])
+      },[actionValue])
+
+      useEffect(()=>{
+        fetchData()
+        console.log(actionValue)
+        console.log(rid)
+        axios.patch(`http://121.42.165.52/hotelapi/rooms`,{id:rid,type:actionValue}
+          ).then(function(res){
+          console.log(res);
+        }).catch(function(error){
+          console.log(error)
+        })
+        fetchData()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      },[rid])
 
       useEffect(()=>{
         if(data.length===0){
@@ -199,12 +212,10 @@ const columns =[
         , // eslint-disable-next-line react-hooks/exhaustive-deps
         [JSON.stringify(data)]
         )
-
-      
   /*getlist */
   const fetchData=()=>{
     axios.get('http://121.42.165.52/hotelapi/rooms/list').then(function(res){
-   // console.log(res);
+  //  console.log(res);
     for(let i = 0 ;i<res.data.Content.length;i++){
       if(res.data.Content[i].Type===0){
         res.data.Content[i].Type='空闲中'
@@ -249,6 +260,20 @@ const columns =[
       axios.get(`http://121.42.165.52/hotelapi/rooms/list?type=${searchType}`)
       .then(
         function(res){
+          for(let i = 0 ;i<res.data.Content.length;i++){
+            if(res.data.Content[i].Type===0){
+              res.data.Content[i].Type='空闲中'
+            }
+            if(res.data.Content[i].Type===1){
+              res.data.Content[i].Type='已入住'
+            }
+            if(res.data.Content[i].Type===2){
+              res.data.Content[i].Type='打扫中'
+            }
+            if(res.data.Content[i].Type===-1){
+              res.data.Content[i].Type='废弃中'
+            }
+          }
           console.log('1'+searchName,searchType)
           //console.log(res)
           setData(res.data.Content)
@@ -261,6 +286,20 @@ const columns =[
       axios.get(`http://121.42.165.52/hotelapi/rooms/list?name=${searchName}`)
       .then(
         function(res){
+          for(let i = 0 ;i<res.data.Content.length;i++){
+            if(res.data.Content[i].Type===0){
+              res.data.Content[i].Type='空闲中'
+            }
+            if(res.data.Content[i].Type===1){
+              res.data.Content[i].Type='已入住'
+            }
+            if(res.data.Content[i].Type===2){
+              res.data.Content[i].Type='打扫中'
+            }
+            if(res.data.Content[i].Type===-1){
+              res.data.Content[i].Type='废弃中'
+            }
+          }
           console.log('2'+searchName,searchType)
           //console.log(res)
           setData(res.data.Content)
@@ -274,6 +313,20 @@ const columns =[
       axios.get(`http://121.42.165.52/hotelapi/rooms/list?name=${searchName}&type=${searchType}`)
       .then(
         function(res){
+          for(let i = 0 ;i<res.data.Content.length;i++){
+            if(res.data.Content[i].Type===0){
+              res.data.Content[i].Type='空闲中'
+            }
+            if(res.data.Content[i].Type===1){
+              res.data.Content[i].Type='已入住'
+            }
+            if(res.data.Content[i].Type===2){
+              res.data.Content[i].Type='打扫中'
+            }
+            if(res.data.Content[i].Type===-1){
+              res.data.Content[i].Type='废弃中'
+            }
+          }
           console.log('3'+searchName,searchType)
           //console.log(res)
           setData(res.data.Content)
