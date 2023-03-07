@@ -2,7 +2,7 @@
 
 START : npm start
 
-antd install: npm install antd --save  
+antd install: npm install antd --save
 
 [Introduction - Ant Design](https://ant.design/docs/spec/introduce)
 
@@ -154,7 +154,6 @@ const search=()=>{
   }
 ```
 
-
 ```js
 
  /**Action change */
@@ -230,9 +229,9 @@ const search=()=>{
 
 And the final outcome is like these following pics
 
-![1678166515541](image/README/1678166515541.png)
+![1678166515541](image\README\1678166515541.png)
 
-![1678166873220](image/README/1678166873220.png)
+![1678166873220](image\README\1678166873220.png)
 
 ![1678168720565](image/README/1678168720565.png)
 
