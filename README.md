@@ -1,4 +1,4 @@
-# SWW-Hotel-Challenge
+# SSW-Hotel-Challenge
 
 START : npm start
 
